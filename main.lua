@@ -28,8 +28,16 @@ sceneContainer.anchorChildren = false
 
 -- Create "background" scene objects
 local background = display.newImage( sceneContainer, "images/background.png", 0, 0 )
-local obstaculo = display.newImage( sceneContainer, "images/obstaculo.png", 160, 230 )
-local obstaculo1 = display.newImage( sceneContainer, "images/obstaculo1.png", 0, 250 )
+local areia = display.newImage( sceneContainer, "images/areia.png", 0, 140 )
+local nuvem1 = display.newImage( sceneContainer, "images/nuvem1.png", 20, 50 )
+local nuvem2 = display.newImage( sceneContainer, "images/nuvem1.png", 100, 10 )
+local nuvem3 = display.newImage( sceneContainer, "images/nuvem1.png", 180, 50 )
+local nuvem4 = display.newImage( sceneContainer, "images/nuvem2.png", 280, 15 )
+local nuvem5 = display.newImage( sceneContainer, "images/nuvem1.png", 400, 50 )
+local trator = display.newImage( sceneContainer, "images/trator.png", -300, 90 )
+local caminhao = display.newImage( sceneContainer, "images/caminhao.png", trator.x - 1000, 80 )
+
+
 
 
 -- Frame (runtime) listener to move objects
@@ -37,19 +45,30 @@ local function move( event )
 	-- Move scene objects
 	local tDelta = event.time - tPrevious
 	tPrevious = event.time
-	local xOffset = ( 0.1*tDelta )	
+	local xOffset = ( 0.1*tDelta )
 
-	obstaculo.x = obstaculo.x + xOffset*1.5
-	obstaculo1.x = obstaculo1.x + xOffset*1.5
+	--[[
+	nuvem1.x = nuvem1.x + xOffset*0.5
+	nuvem2.x = nuvem2.x + xOffset*0.5
+	nuvem3.x = nuvem3.x + xOffset*0.5
+	nuvem4.x = nuvem4.x + xOffset*0.5
+	nuvem5.x = nuvem5.x + xOffset*0.5
+	--]]
 
-	if obstaculo.x > 480 + obstaculo.width/2 then
-		obstaculo:translate( -480*4, 0 )
-	end	
+	trator.x = trator.x + xOffset*1.5 
+	caminhao.x = caminhao.x + xOffset*1.5 
 
-	if obstaculo1.x > 480 + obstaculo1.width/2 then
-		obstaculo1:translate( -600*4, 0 )
-	end		
+	if trator.x > 480 + trator.width/2 then
+		trator:translate( -480*4, 0 )
+	end
+
+	if caminhao.x > 480 + caminhao.width/2 then
+		caminhao:translate( -480*4, 0 )
+	end
+
 end
 
 Runtime:addEventListener( "enterFrame", move )
+
+
 
