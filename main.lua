@@ -37,8 +37,17 @@ local nuvem5 = display.newImage( sceneContainer, "images/nuvem1.png", 400, 50 )
 local trator = display.newImage( sceneContainer, "images/trator.png", -300, 90 )
 local caminhao = display.newImage( sceneContainer, "images/caminhao.png", trator.x - 1000, 80 )
 
-
-
+-- Set up horse image sheet and sprite instance
+local options = {
+	frames = require( "uma" ).frames,
+}
+local umaSheet = graphics.newImageSheet( "images/uma.png", options )
+local spriteOptions = { name="uma", start=1, count=8, time=1000 }
+local spriteInstance = display.newSprite( sceneContainer, umaSheet, spriteOptions )
+spriteInstance.anchorX = 1
+spriteInstance.anchorY = 1
+spriteInstance.x = 460
+spriteInstance.y = 260
 
 -- Frame (runtime) listener to move objects
 local function move( event )
@@ -47,16 +56,15 @@ local function move( event )
 	tPrevious = event.time
 	local xOffset = ( 0.1*tDelta )
 
-	--[[
+	
 	nuvem1.x = nuvem1.x + xOffset*0.5
 	nuvem2.x = nuvem2.x + xOffset*0.5
 	nuvem3.x = nuvem3.x + xOffset*0.5
 	nuvem4.x = nuvem4.x + xOffset*0.5
 	nuvem5.x = nuvem5.x + xOffset*0.5
-	--]]
 
-	trator.x = trator.x + xOffset*1.5 
-	caminhao.x = caminhao.x + xOffset*1.5 
+	trator.x = trator.x + xOffset*1.4 
+	caminhao.x = caminhao.x + xOffset*1.4
 
 	if trator.x > 480 + trator.width/2 then
 		trator:translate( -480*4, 0 )
@@ -67,6 +75,9 @@ local function move( event )
 	end
 
 end
+
+-- Start horse animation
+spriteInstance:play()
 
 Runtime:addEventListener( "enterFrame", move )
 
