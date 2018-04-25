@@ -4,7 +4,7 @@ local scene = composer.newScene()
 
 
 local function gotoPhases()
-	composer.gotoScene( "scene.phases" )
+	composer.gotoScene( "scene.phase1" )
 end
 
 local function gotoHighScores()
