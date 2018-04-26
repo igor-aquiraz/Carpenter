@@ -1,5 +1,7 @@
 local composer = require( "composer" )
 local scene = composer.newScene()
+
+
 --Esconde StatusBar
 display.setStatusBar( display.HiddenStatusBar )
 local tPrevious = system.getTimer()
@@ -16,12 +18,10 @@ sceneContainer.anchorChildren = false
 
 -- Create "background" scene objects
 local background = display.newImage( sceneContainer, "images/background.png", 0, 0 )
-local areia = display.newImage( sceneContainer, "images/areia.png", 0, 140 )
-local nuvem1 = display.newImage( sceneContainer, "images/nuvem1.png", 20, 50 )
-local nuvem2 = display.newImage( sceneContainer, "images/nuvem1.png", 100, 10 )
-local nuvem3 = display.newImage( sceneContainer, "images/nuvem1.png", 180, 50 )
-local nuvem4 = display.newImage( sceneContainer, "images/nuvem2.png", 280, 15 )
-local nuvem5 = display.newImage( sceneContainer, "images/nuvem1.png", 400, 50 )
+local nuvens = display.newImage( sceneContainer, "images/Nuvens.png", 0, -35 )
+local morro2 = display.newImage( sceneContainer, "images/morro2.png", 480, 140 ) 
+local morro1 = display.newImage( sceneContainer, "images/morro1.png", 0, 155 )
+local calcada = display.newImage( sceneContainer, "images/calcada.png", 0, 175 )
 local trator = display.newImage( sceneContainer, "images/trator.png", 480, 90 )
 local caminhao = display.newImage( sceneContainer, "images/caminhao.png", 1200, 80 )
 
