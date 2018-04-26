@@ -19,8 +19,9 @@ sceneContainer.anchorChildren = false
 -- Create "background" scene objects
 local background = display.newImage( sceneContainer, "images/background.png", 0, 0 )
 local nuvens = display.newImage( sceneContainer, "images/Nuvens.png", 0, -35 )
-local morro2 = display.newImage( sceneContainer, "images/morro2.png", 480, 140 ) 
+local nuvens2 = display.newImage( sceneContainer, "images/Nuvens.png", display.contentWidth, -35 )
 local morro1 = display.newImage( sceneContainer, "images/morro1.png", 0, 155 )
+local morro2 = display.newImage( sceneContainer, "images/morro2.png", display.contentWidth, 140 ) 
 local calcada = display.newImage( sceneContainer, "images/calcada.png", 0, 175 )
 local trator = display.newImage( sceneContainer, "images/trator.png", 480, 90 )
 local caminhao = display.newImage( sceneContainer, "images/caminhao.png", 1200, 80 )
@@ -65,7 +66,8 @@ local function move( event )
 	tPrevious = event.time
 	local xOffset = ( 0.1*tDelta )
 
-    trator.x = trator.x - xOffset/1.4 
+
+ --[[   trator.x = trator.x - xOffset/1.4 
 	if trator.x < -480 then
 		trator:translate(480*4, 0)
 	end
@@ -74,11 +76,37 @@ local function move( event )
 	if caminhao.x < -1200 then
 		caminhao:translate(trator.x + 1000*2, 0)
 	end
+	]]--
+
+
+	nuvens.x = nuvens.x - xOffset/2.5
+	if nuvens.x < -display.contentWidth then
+		nuvens:translate(nuvens.x + display.contentWidth, 0)
+		nuvens.x = display.contentWidth
+	end
+
+	nuvens2.x = nuvens2.x - xOffset/2.5
+	if nuvens2.x < -display.contentWidth then
+		nuvens2:translate(nuvens.x + display.contentWidth, 0)
+		nuvens2.x = display.contentWidth
+	end
+
+    morro1.x = morro1.x - xOffset/2.5
+	if morro1.x < -display.contentWidth then
+		morro1:translate(morro1.x + display.contentWidth, 0)
+		morro1.x = display.contentWidth
+	end
+
+	 morro2.x = morro2.x - xOffset/2.5
+	if morro2.x < -display.contentWidth then
+		morro2:translate(morro2.x + display.contentWidth, 0)
+		morro2.x = display.contentWidth
+	end
 
 end
 
 -- Start horse animation
-spriteInstance:play()
+--spriteInstance:play()
 
 Runtime:addEventListener( "enterFrame", move )
 
