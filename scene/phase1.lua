@@ -1,7 +1,6 @@
 local composer = require( "composer" )
 local scene = composer.newScene()
 
-
 --Esconde StatusBar
 display.setStatusBar( display.HiddenStatusBar )
 local tPrevious = system.getTimer()
@@ -16,7 +15,7 @@ local sceneContainer = display.newContainer( worldGroup, 480, 320 )
 sceneContainer.x, sceneContainer.y = 0,0
 sceneContainer.anchorChildren = false
 
--- Create "background" scene objects
+-- Cria background e objetos
 local background = display.newImage( sceneContainer, "images/background.png", 0, 0 )
 local nuvens = display.newImage( sceneContainer, "images/Nuvens.png", 0, -35 )
 local nuvens2 = display.newImage( sceneContainer, "images/Nuvens.png", display.contentWidth, -35 )
@@ -30,17 +29,17 @@ local caminhao = display.newImage( sceneContainer, "images/caminhao.png", 1200, 
 local options = {
 	frames = require( "uma" ).frames,
 }
-local umaSheet = graphics.newImageSheet( "images/uma.png", options )
-local spriteOptions = { name="uma", start=1, count=8, time=1000 }
+local umaSheet = graphics.newImageSheet( "images/spriteCarpenter.png", options )
+local spriteOptions = { name="uma", start=1, count=6, time=700 }
 local spriteInstance = display.newSprite( sceneContainer, umaSheet, spriteOptions )
 spriteInstance.anchorX = 1
 spriteInstance.anchorY = 1
-spriteInstance.x = 460
-spriteInstance.y = 260
+spriteInstance.x = 100
+spriteInstance.y = 300
 
 --Criar limites para pulos
 local limiteInicial = display.newRect(0,spriteInstance.y,display.contentWidth,0)
-local limiteFinal   = display.newRect(0,spriteInstance.y - 220,display.contentWidth,0)
+local limiteFinal   = display.newRect(0,spriteInstance.y - 180,display.contentWidth,0)
 
 --Criar a Fisica
 local physics = require("physics")
@@ -52,7 +51,7 @@ physics.addBody(limiteFinal, "static")
 
 function moverPersonagem(event)
 	if (event.phase == "began") then
-		spriteInstance:setLinearVelocity(0, -200)
+		spriteInstance:setLinearVelocity(0, -250)
 		--spriteInstance.xScale, spriteInstance.yScale = spriteInstance.xScale * 0.95, spriteInstance.yScale * 0.95
 	end
 end
@@ -106,7 +105,7 @@ local function move( event )
 end
 
 -- Start horse animation
---spriteInstance:play()
+spriteInstance:play()
 
 Runtime:addEventListener( "enterFrame", move )
 
