@@ -25,6 +25,12 @@ local calcada = display.newImage( sceneContainer, "images/calcada.png", 0, 175 )
 local trator = display.newImage( sceneContainer, "images/trator.png", 480, 90 )
 local caminhao = display.newImage( sceneContainer, "images/caminhao.png", 1200, 80 )
 
+--botoes
+local BotaoAbaixar = display.newImage( sceneContainer, "images/buttonAbaixar.png", display.contentWidth -100, display.contentHeight - 35 )
+local BotaoPular   = display.newImage( sceneContainer, "images/buttonPular.png", display.contentWidth -100, display.contentHeight - 70 )
+local BotaoAbaixar = display.newImage( sceneContainer, "images/buttonBater.png", display.contentWidth -60, display.contentHeight - 60 )
+
+
 -- Set up horse image sheet and sprite instance
 local options = {
 	frames = require( "uma" ).frames,
@@ -49,14 +55,14 @@ physics.addBody(spriteInstance, {bounce, 0})
 physics.addBody(limiteInicial, "static")
 physics.addBody(limiteFinal, "static")
 
-function moverPersonagem(event)
+function Pular(event)
 	if (event.phase == "began") then
 		spriteInstance:setLinearVelocity(0, -250)
 		--spriteInstance.xScale, spriteInstance.yScale = spriteInstance.xScale * 0.95, spriteInstance.yScale * 0.95
 	end
 end
 
-spriteInstance:addEventListener("touch", moverPersonagem)
+BotaoPular:addEventListener("touch", Pular)
 
 -- Frame (runtime) listener to move objects
 local function move( event )
