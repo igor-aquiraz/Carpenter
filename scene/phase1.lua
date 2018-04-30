@@ -25,6 +25,9 @@ local calcada = display.newImage( sceneContainer, "images/calcada.png", 0, 175 )
 local trator = display.newImage( sceneContainer, "images/trator.png", 480, 90 )
 local caminhao = display.newImage( sceneContainer, "images/caminhao.png", 1200, 80 )
 
+--obstaculos
+local obstaculoCone = display.newImage( sceneContainer, "images/obstaculoCone.png", display.contentWidth, display.contentHeight - 50)
+
 --botoes
 local BotaoAbaixar = display.newImage( sceneContainer, "images/buttonAbaixar.png", display.contentWidth -100, display.contentHeight - 35 )
 local BotaoPular   = display.newImage( sceneContainer, "images/buttonPular.png", display.contentWidth -100, display.contentHeight - 70 )
@@ -36,7 +39,7 @@ local options = {
 	frames = require( "uma" ).frames,
 }
 local umaSheet = graphics.newImageSheet( "images/spriteCarpenter.png", options )
-local spriteOptions = { name="uma", start=1, count=6, time=700 }
+local spriteOptions = { name="uma", start=1, count=6, time=480 }
 local spriteInstance = display.newSprite( sceneContainer, umaSheet, spriteOptions )
 spriteInstance.anchorX = 1
 spriteInstance.anchorY = 1
@@ -45,7 +48,7 @@ spriteInstance.y = 300
 
 --Criar limites para pulos
 local limiteInicial = display.newRect(0,spriteInstance.y,display.contentWidth,0)
-local limiteFinal   = display.newRect(0,spriteInstance.y - 180,display.contentWidth,0)
+local limiteFinal   = display.newRect(0,spriteInstance.y - 210,display.contentWidth,0)
 
 --Criar a Fisica
 local physics = require("physics")
@@ -54,10 +57,13 @@ physics.setGravity(0, 9.8)
 physics.addBody(spriteInstance, {bounce, 0})
 physics.addBody(limiteInicial, "static")
 physics.addBody(limiteFinal, "static")
+--Adiciona fisica nos obstáculos
+physics.addBody(obstaculoCone, "static")
+
 
 function Pular(event)
 	if (event.phase == "began") then
-		spriteInstance:setLinearVelocity(0, -250)
+		spriteInstance:setLinearVelocity(0, -280)
 		--spriteInstance.xScale, spriteInstance.yScale = spriteInstance.xScale * 0.95, spriteInstance.yScale * 0.95
 	end
 end
@@ -107,6 +113,14 @@ local function move( event )
 		morro2:translate(morro2.x + display.contentWidth, 0)
 		morro2.x = display.contentWidth
 	end
+
+	--Obstáculos
+	obstaculoCone.x = obstaculoCone.x - xOffset/1.0
+	if obstaculoCone.x < -display.contentWidth then
+		obstaculoCone:translate(obstaculoCone.x + display.contentWidth, 0)
+		obstaculoCone.x = display.contentWidth
+	end
+
 
 end
 
