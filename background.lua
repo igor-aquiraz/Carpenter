@@ -15,3 +15,46 @@ nuvens2    = display.newImage( sceneContainer, "images/Nuvens.png", display.cont
 morro1     = display.newImage( sceneContainer, "images/morro1.png", 0, 155 )
 morro2     = display.newImage( sceneContainer, "images/morro2.png", display.contentWidth, 140 ) 
 calcada    = display.newImage( sceneContainer, "images/calcada.png", 0, 175 )
+
+function updateBackgrounds()
+
+	nuvens.x = nuvens.x - (velocidade/55)
+	if nuvens.x < -display.contentWidth then
+		nuvens.x = display.contentWidth
+	end
+
+	nuvens2.x = nuvens2.x - (velocidade/55)
+	if nuvens2.x < -display.contentWidth then
+		nuvens2.x = display.contentWidth
+	end
+
+    morro1.x = morro1.x - (velocidade/55)
+	if morro1.x < -display.contentWidth then
+		morro1.x = display.contentWidth
+	end
+
+	 morro2.x = morro2.x - (velocidade/55)
+	if morro2.x < -display.contentWidth then
+		morro2.x = display.contentWidth
+	end
+end
+
+function resetBackgrounds()
+	background.x = 0 
+	background.y = 0
+
+	nuvens.x = 0
+	nuvens.y = -35
+
+	nuvens.x = display.contentWidth
+	nuvens.y = -35
+
+	morro1.x = 0
+	morro1.y = 155
+
+	morro2.x = display.contentWidth
+	morro2.y = 140	
+
+	calcada.x = 0
+	calcada.y = 175
+end
