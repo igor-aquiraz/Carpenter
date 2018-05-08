@@ -98,7 +98,7 @@ local options =
 
 
 local imageSheet = graphics.newImageSheet( "images/spriteCarpenter.png", options )
-local sequenceData ={name="carpenter", start=1, count=6, time=750}
+local sequenceData ={name="carpenter", start=1, count=6, time=600}
 carpenter = display.newSprite( imageSheet, sequenceData )
 resetarCarpenter()
 
@@ -108,20 +108,24 @@ collisionRect:setFillColor(140, 140, 140)
 collisionRect:setStrokeColor(180, 180, 180)
 collisionRect.alpha = 0
 
-character = display.newGroup()
-character:insert(carpenter)
-character:insert(collisionRect)
+personagem = display.newGroup()
+personagem:insert(carpenter)
+personagem:insert(collisionRect)
 
-function updateCharacter()
-    --if our hero is jumping then switch to the jumping animation
-    --if not keep playing the running animation
-    if(carpenter.estaVivo == true) then        
+personagens:insert(personagem)
+
+function updateCarpenter()
+    if(carpenter.estaVivo == true) then  
+
         if(carpenter.accel > 0) then
             carpenter.accel = carpenter.accel - 1
+            carpenter.y = carpenter.y - carpenter.accel 
+            carpenter.y = carpenter.y - carpenter.gravity   
+        else
+            carpenter.x = 50
+            carpenter.y = 200        
         end
-        
-        carpenter.y = carpenter.y - carpenter.accel
-        carpenter.y = carpenter.y - carpenter.gravity
+
     end
     collisionRect.y = carpenter.y
 end

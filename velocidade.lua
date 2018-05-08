@@ -2,12 +2,12 @@ baseVelocidade = 80
 velocidade = baseVelocidade
 ultimavelocidade = velocidade
 
-function updateSpeed()
+function updateVelocidade()
 	velocidade = velocidade + .004
 	ultimavelocidade = velocidade
 end
 
-function resetSpeed()
+function resetVelocidade()
 	velocidade = baseVelocidade
 	ultimavelocidade = baseVelocidade
 end
