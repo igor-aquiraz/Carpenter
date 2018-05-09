@@ -10,6 +10,8 @@ function endGame()
 	gameOver.y = 80
 	--carpenter:setSequence("jumping")
 	carpenter:pause()
+	audio.stop(2)
+	audio.stop(3)
 	-- timer.cancel( event.source )
 end
 

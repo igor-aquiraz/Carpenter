@@ -3,7 +3,7 @@ velocidade = baseVelocidade
 ultimavelocidade = velocidade
 
 function updateVelocidade()
-	velocidade = velocidade + .004
+	velocidade = velocidade + .04
 	ultimavelocidade = velocidade
 end
 

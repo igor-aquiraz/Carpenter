@@ -2,8 +2,12 @@ local composer = require( "composer" )
 
 local scene = composer.newScene()
 
+local musicTrack
+musicTrack = audio.loadStream( "audio/Doh_De_Oh.mp3")
+
 
 local function gotoPhases()
+	audio.stop(1)
 	composer.gotoScene( "scene.phase1" )
 end
 
@@ -56,7 +60,8 @@ function scene:create( event )
 	highScoresButton:addEventListener( "tap", gotoHighScores )
 	creditsButton:addEventListener( "tap", gotoCredits )
 	optionsButton:addEventListener( "tap", gotoOptions )
-	exitButton:addEventListener( "tap", gotoExit )		
+	exitButton:addEventListener( "tap", gotoExit )	
+	audio.play( musicTrack, { channel=1, loops=-1 } )	
 end
 
 -- show()

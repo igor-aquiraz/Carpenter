@@ -2,6 +2,11 @@ local composer = require( "composer" )
 local scene = composer.newScene()
 --Esconde StatusBar
 display.setStatusBar( display.HiddenStatusBar )
+local musicTrack
+musicTrack = audio.loadStream( "audio/Snack_Time.mp3")
+
+local musicColusion
+musicColusion = audio.loadStream( "audio/Dress_Shoe_Run_on_Concrete.mp3")
 
 function scene:create(event)
 
@@ -50,7 +55,6 @@ function scene:create(event)
 			updateVelocidade()
 			updateBackgrounds()
 			updateScore()
-			--updateObstaculos()
 			updateCarpenter()
 		else
 			endGame()
@@ -67,6 +71,8 @@ function scene:create(event)
 		else
 			if (gameOver.x > 0 and gameOver.y < 500) then
 				restartGame()
+				audio.play( musicTrack, { channel=2, loops=-1 } )
+				audio.play( musicColusion, { channel=3, loops=-1 } )
 			end	
 		end
 	end
@@ -79,6 +85,8 @@ function scene:create(event)
 	timer.performWithDelay(1, update, -1)
 	Runtime:addEventListener( "enterFrame", move )
 	Runtime:addEventListener("touch", touched, -1)
+	audio.play( musicTrack, { channel=2, loops=-1 } )	
+	audio.play( musicColusion, { channel=3, loops=-1 } )
 end
 
 scene:addEventListener("create", create)
