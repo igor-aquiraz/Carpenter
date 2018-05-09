@@ -10,7 +10,7 @@ function scene:create(event)
 	screenXwidth = display.contentWidth
 	screenXcenter = screenXwidth/2
 	screenYheight = display.contentHeight
-	screenYcenter = screenYheight/2-20
+	screenYcenter = screenYheight/2
 
 	inEvent = 0
 	eventRun = 0
@@ -22,12 +22,12 @@ function scene:create(event)
 
 
 	require("score")
-	--require("chao")
+	require("obstaculos")
 	require("background")
-	--require("collisions")
+	require("collisions")
 	--require("events")
 	require("carpenter")
-	--require("game_over")	
+	require("gameOver")	
 	require("velocidade")
 
 
@@ -46,13 +46,14 @@ function scene:create(event)
 
 	local function update( event )
 		if carpenter.estaVivo then
+			checkCollisions()
 			updateVelocidade()
 			updateBackgrounds()
 			updateScore()
-			--updateBlocks()
+			--updateObstaculos()
 			updateCarpenter()
 		else
-			--endGame()
+			endGame()
 		end
 	end
 
@@ -63,10 +64,20 @@ function scene:create(event)
 					carpenter.accel = 20
 				end	
 			end
+		else
+			if (gameOver.x > 0 and gameOver.y < 500) then
+				restartGame()
+			end	
 		end
 	end
 
+
+	function move( event )
+		updateObstaculos()
+	end
+
 	timer.performWithDelay(1, update, -1)
+	Runtime:addEventListener( "enterFrame", move )
 	Runtime:addEventListener("touch", touched, -1)
 end
 

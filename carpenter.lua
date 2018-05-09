@@ -5,7 +5,7 @@ end
 function resetarCarpenter()
     carpenter.x = 50
     carpenter.y = 200
-    carpenter.gravity = -6
+    carpenter.gravity = -5
     carpenter.accel = 0
     carpenter.estaVivo = true
     carpenter:play()
