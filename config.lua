@@ -1,16 +1,18 @@
-application = 
+application =
 {
-    content = 
-    { 
+    content =
+    {
         width = 320,
-        height = 480,
+        height = 480, 
         scale = "letterbox",
-        xAlign = "center",
-        yAlign = "center",
-         
+        fps = 60,
+        
+        --[[
         imageSuffix =
         {
-            ["@2x"] = 1.5
-        }
-    }
+                ["@2x"] = 2,
+                ["@4x"] = 4,
+        },
+        --]]
+    },
 }

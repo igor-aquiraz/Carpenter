@@ -13,7 +13,8 @@ nuvens     = display.newImage("images/Nuvens.png", 0, -35 )
 nuvens2    = display.newImage("images/Nuvens.png", display.contentWidth, -35 )
 morro1     = display.newImage("images/morro1.png", 0, 155 )
 morro2     = display.newImage("images/morro2.png", display.contentWidth, 140 ) 
-calcada    = display.newImage("images/calcada.png", 0, 175 )
+calcada1   = display.newImage("images/calcada.png", 0, 175 )
+calcada2   = display.newImage("images/calcada.png", display.contentWidth, 175 )
 
 function updateBackgrounds()
 
@@ -36,6 +37,19 @@ function updateBackgrounds()
 	if morro2.x < -display.contentWidth then
 		morro2.x = display.contentWidth
 	end
+
+	--[[
+	calcada1.x = calcada1.x - (velocidade/55)
+	if calcada1.x < -display.contentWidth then
+		calcada1.x = display.contentWidth
+	end
+
+	calcada2.x = calcada2.x - (velocidade/55)
+	if calcada2.x < -display.contentWidth then
+		calcada2.x = display.contentWidth
+	end
+
+	--]]
 end
 
 function resetBackgrounds()
@@ -54,6 +68,9 @@ function resetBackgrounds()
 	morro2.x = display.contentWidth
 	morro2.y = 140	
 
-	calcada.x = 0
-	calcada.y = 175
+	calcada1.x = 0
+	calcada1.y = 175
+
+	calcada2.x = display.contentWidth
+	calcada2.y = 175
 end

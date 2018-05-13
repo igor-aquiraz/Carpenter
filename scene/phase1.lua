@@ -41,7 +41,8 @@ function scene:create(event)
 	tela:insert(nuvens2)
 	tela:insert(morro1)
 	tela:insert(morro2)
-	tela:insert(calcada)
+	tela:insert(calcada1)
+	tela:insert(calcada2)
 	tela:insert(blocks)
 	tela:insert(carpenter)
 	tela:insert(collisionRect)
@@ -81,6 +82,10 @@ function scene:create(event)
 	function move( event )
 		updateObstaculos()
 	end
+
+	local botaoMarreta = display.newImage( "images/botaoMarreta.png", 420, 260)
+	botaoMarreta.height = 50
+	botaoMarreta.width  = 50
 
 	timer.performWithDelay(1, update, -1)
 	Runtime:addEventListener( "enterFrame", move )
