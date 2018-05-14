@@ -52,7 +52,7 @@ function scene:create(event)
 
 	local function update( event )
 		if carpenter.estaVivo then
-			checkCollisions()
+			--checkCollisions()
 			updateVelocidade()
 			updateBackgrounds()
 			updateScore()
