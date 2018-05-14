@@ -11,12 +11,8 @@ sceneContainer.anchorChildren = false
 background = display.newImage("images/background.png", 0, 0 )
 nuvens     = display.newImage("images/Nuvens.png", 0, -35 )
 nuvens2    = display.newImage("images/Nuvens.png", display.contentWidth, -35 )
-morro1     = display.newImage("images/morro1.jpg", 0, 0 )
-morro1.width  = 480
-morro1.height = 200
-morro2     = display.newImage("images/morro1.jpg", display.contentWidth, 0 ) 
-morro2.width  = 480
-morro2.height = 200
+morro1     = display.newImage("images/morro1.png", 0, 155 )
+morro2     = display.newImage("images/morro2.png", display.contentWidth, 140 ) 
 calcada1   = display.newImage("images/calcada.png", 0, 175 )
 calcada2   = display.newImage("images/calcada.png", display.contentWidth, 175 )
 
@@ -67,10 +63,10 @@ function resetBackgrounds()
 	nuvens.y = -35
 
 	morro1.x = 0
-	morro1.y = 0
+	morro1.y = 155
 
 	morro2.x = display.contentWidth
-	morro2.y = 0	
+	morro2.y = 140	
 
 	calcada1.x = 0
 	calcada1.y = 175

@@ -1,12 +1,14 @@
 -- Creating Game Over
-gameOver = display.newImage("images/gameOver.png")
+gameOver = display.newImage("images/gameOverOficial.png")
 gameOver.name = "gameOver"
 gameOver.x = 0
 gameOver.y = 500
 
 function endGame()
 	velocidade = 0
-	gameOver.x = 95
+	gameOver.width = 264
+	gameOver.height = 195
+	gameOver.x = 110
 	gameOver.y = 80
 	--carpenter:setSequence("jumping")
 	carpenter:pause()
