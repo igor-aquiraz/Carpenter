@@ -118,7 +118,8 @@ local options =
 
 
 local imageSheet = graphics.newImageSheet( "images/carpenterSprites.png", options )
-local sequenceData ={name="carpenter", start=1, count=6, time=500}
+local sequenceData ={{name="carpenter", start=1, count=6, time=500},
+                     {name="pular", start=7, count=1, time=700}}
 carpenter = display.newSprite( imageSheet, sequenceData )
 resetarCarpenter()
 
