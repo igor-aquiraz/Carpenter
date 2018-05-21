@@ -25,34 +25,36 @@ function scene:create(event)
 	personagens = display.newGroup()
 	tela = display.newGroup()
 
-
 	require("score")
+	require("crianca")
 	require("obstaculos")
 	require("background")
 	require("collisions")
-	--require("events")
 	require("carpenter")
 	require("gameOver")	
 	require("velocidade")
 
-
-	tela:insert(background)
+	--background
+	tela:insert(fundo)
 	tela:insert(nuvens)
 	tela:insert(nuvens2)
-	tela:insert(morro1)
-	tela:insert(morro2)
-	tela:insert(calcada1)
-	tela:insert(calcada2)
+	tela:insert(campo)
+	tela:insert(campo2)
+	tela:insert(pista)
+	tela:insert(pista2)
+
+	--obstáculos
+	tela:insert(crianca)
 	tela:insert(blocks)
 	tela:insert(carpenter)
+
 	tela:insert(collisionRect)
 	tela:insert(scoreText)
-	--tela:insert(limiteInicial)
-	--tela:insert(gameOver)
+	tela:insert(gameOver)
 
 	local function update( event )
 		if carpenter.estaVivo then
-			--checkCollisions()
+			checkCollisions()
 			updateVelocidade()
 			updateBackgrounds()
 			updateScore()
@@ -65,8 +67,8 @@ function scene:create(event)
 	function touched( event )
 		if carpenter.estaVivo then
 			if(event.phase == "began") then
-				if (carpenter.y == 200) then
-					carpenter.accel = 20
+				if (carpenter.y == 750 or (carpenter.y > 750 and carpenter.y < 770)) then
+					carpenter.accel = 35
 				end	
 			end
 		else
@@ -83,9 +85,12 @@ function scene:create(event)
 		updateObstaculos()
 	end
 
+
+	--[[
 	local botaoMarreta = display.newImage( "images/botaoMarreta.png", 420, 260)
 	botaoMarreta.height = 50
 	botaoMarreta.width  = 50
+	]]--
 
 	timer.performWithDelay(1, update, -1)
 	Runtime:addEventListener( "enterFrame", move )

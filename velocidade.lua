@@ -1,4 +1,4 @@
-baseVelocidade = 80
+baseVelocidade = 90
 velocidade = baseVelocidade
 ultimavelocidade = velocidade
 

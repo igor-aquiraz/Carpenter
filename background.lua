@@ -3,74 +3,67 @@ local worldGroup = display.newGroup()
 display.setDefault( "anchorX", 0.0 )
 display.setDefault( "anchorY", 0.0 )
 -- Create a container for the entire scene
-local sceneContainer = display.newContainer( worldGroup, 480, 320 )
+local sceneContainer = display.newContainer( worldGroup, 1920, 1080 )
 sceneContainer.x, sceneContainer.y = 0,0
 sceneContainer.anchorChildren = false
 
 --Criar os Backgrounds
-background = display.newImage("images/background.png", 0, 0 )
-nuvens     = display.newImage("images/Nuvens.png", 0, -35 )
-nuvens2    = display.newImage("images/Nuvens.png", display.contentWidth, -35 )
-morro1     = display.newImage("images/morro1.png", 0, 155 )
-morro2     = display.newImage("images/morro2.png", display.contentWidth, 140 ) 
-calcada1   = display.newImage("images/calcada.png", 0, 175 )
-calcada2   = display.newImage("images/calcada.png", display.contentWidth, 175 )
+fundo     = display.newImage("images/fundo.png", 0, 0)
+nuvens       = display.newImage("images/nuvens.png", 0, 0)
+nuvens2      = display.newImage("images/nuvens.png", 4096, 0)
+
+campo     = display.newImage("images/Campo.png", 0, 50 )
+campo2    = display.newImage("images/Campo.png", 5740, 50)
+
+pista     = display.newImage("images/Pista.png", 0, 600 )
+pista2    = display.newImage("images/Pista.png", 5740, 600 )
 
 function updateBackgrounds()
-
-	nuvens.x = nuvens.x - (velocidade/55)
-	if nuvens.x < -display.contentWidth then
-		nuvens.x = display.contentWidth
+	nuvens.x = nuvens.x - (velocidade/100)
+	if nuvens.x < -4096 then
+		nuvens.x = 4096
+	end
+	nuvens2.x = nuvens2.x - (velocidade/100)
+	if nuvens2.x < -4096 then
+		nuvens2.x = 4096
 	end
 
-	nuvens2.x = nuvens2.x - (velocidade/55)
-	if nuvens2.x < -display.contentWidth then
-		nuvens2.x = display.contentWidth
+
+	campo.x = campo.x - (velocidade/50)
+	if campo.x < -5740 then
+		campo.x = 5720
+	end
+	campo2.x = campo2.x - (velocidade/50)
+	if campo2.x < -5740 then
+		campo2.x = 5720
 	end
 
-    morro1.x = morro1.x - (velocidade/55)
-	if morro1.x < -display.contentWidth then
-		morro1.x = display.contentWidth
-	end
 
-	 morro2.x = morro2.x - (velocidade/55)
-	if morro2.x < -display.contentWidth then
-		morro2.x = display.contentWidth
+	pista.x = pista.x - (velocidade/40)
+	if pista.x < -5740 then
+		pista.x = 5720
 	end
-
-	--[[
-	calcada1.x = calcada1.x - (velocidade/55)
-	if calcada1.x < -display.contentWidth then
-		calcada1.x = display.contentWidth
+	pista2.x = pista2.x - (velocidade/40)
+	if pista2.x < -5740 then
+		pista2.x = 5720
 	end
-
-	calcada2.x = calcada2.x - (velocidade/55)
-	if calcada2.x < -display.contentWidth then
-		calcada2.x = display.contentWidth
-	end
-
-	--]]
 end
 
+
 function resetBackgrounds()
-	background.x = 0 
-	background.y = 0
+	campo.x = 0
+	campo.y = 50
+	campo2.x = 5740
+	campo2.y = 50 
 
 	nuvens.x = 0
-	nuvens.y = -35
+	nuvens.y = 0
+	nuvens.x = 4096
+	nuvens.y = 0
 
-	nuvens.x = display.contentWidth
-	nuvens.y = -35
+	pista.x = 0
+	pista.y = 600
+	pista2.x = 5740
+	pista2.y = 600 
 
-	morro1.x = 0
-	morro1.y = 155
-
-	morro2.x = display.contentWidth
-	morro2.y = 140	
-
-	calcada1.x = 0
-	calcada1.y = 175
-
-	calcada2.x = display.contentWidth
-	calcada2.y = 175
 end

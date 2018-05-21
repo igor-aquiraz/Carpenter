@@ -1,24 +1,25 @@
--- Creating Game Over
-gameOver = display.newImage("images/gameOverOficial.png")
+local composer = require( "composer" )
+local scene = composer.newScene()
+
+gameOver = display.newImage("images/gameOver.jpg")
 gameOver.name = "gameOver"
 gameOver.x = 0
-gameOver.y = 500
+gameOver.y = screenYheight * 2 
 
 function endGame()
 	velocidade = 0
-	gameOver.width = 264
-	gameOver.height = 195
-	gameOver.x = 110
-	gameOver.y = 80
+	gameOver.x = 500
+	gameOver.y = 250
+	gameOver.width = 900
+	gameOver.height = 600
 	--carpenter:setSequence("jumping")
 	carpenter:pause()
 	audio.stop(2)
 	audio.stop(3)
-	-- timer.cancel( event.source )
+	composer.gotoScene( "scene.menu" )
 end
 
 function restartGame()
-	--move menu
 	gameOver.x = 0
 	gameOver.y = screenYheight * 2
 	
@@ -27,5 +28,5 @@ function restartGame()
 	resetarCarpenter()
 	resetObstaculos()
 	resetBackgrounds()
-	-- timer.performWithDelay(1, update, -1)
+	resetarCrianca()
 end
