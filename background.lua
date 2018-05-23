@@ -58,8 +58,8 @@ function resetBackgrounds()
 
 	nuvens.x = 0
 	nuvens.y = 0
-	nuvens.x = 4096
-	nuvens.y = 0
+	nuvens2.x = 4096
+	nuvens2.y = 0
 
 	pista.x = 0
 	pista.y = 600

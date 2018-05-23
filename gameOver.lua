@@ -16,7 +16,6 @@ function endGame()
 	carpenter:pause()
 	audio.stop(2)
 	audio.stop(3)
-	composer.gotoScene( "scene.menu" )
 end
 
 function restartGame()

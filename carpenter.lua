@@ -119,7 +119,9 @@ local options =
 
 local imageSheet = graphics.newImageSheet( "images/carpenterSprites.png", options )
 local sequenceData ={{name="carpenter", start=1, count=6, time=500},
-                     {name="pular", start=7, count=1, time=700}}
+                     {name="pular", start=1, count=1, time=500,
+                      name="colisao", start=7, count=1, time=500,
+                      name="bater", start=8, count=1, time=500}}
 carpenter = display.newSprite( imageSheet, sequenceData )
 resetarCarpenter()
 
@@ -138,13 +140,17 @@ personagens:insert(personagem)
 function updateCarpenter()
     if(carpenter.estaVivo == true) then  
         if(carpenter.accel > 0) then
+            carpenter:setSequence("pular")
+            carpenter:play()
             carpenter.accel = carpenter.accel - 1
             carpenter.y = carpenter.y - carpenter.accel 
             carpenter.y = carpenter.y - carpenter.gravity   
         else
             if carpenter.y < 750 then 
                 carpenter.x = 150
-                carpenter.y = carpenter.y + 15 
+                carpenter.y = carpenter.y + 15
+                carpenter:setSequence("carpenter")
+                carpenter:play() 
             end       
         end
 
