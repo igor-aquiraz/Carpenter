@@ -67,9 +67,14 @@ function scene:create(event)
 	function touched( event )
 		if carpenter.estaVivo then
 			if(event.phase == "began") then
-				if (carpenter.y == 750 or (carpenter.y > 750 and carpenter.y < 770)) then
-					carpenter.accel = 35
-				end	
+				if event.x > carpenter.x then
+					carpenter.bater = false
+					if (carpenter.y == 750 or (carpenter.y > 750 and carpenter.y < 770)) then
+						carpenter.accel = 35
+					end	
+				else
+					carpenter.bater = true
+				end
 			end
 		else
 			if (gameOver.x > 0 and gameOver.y < 500) then

@@ -3,14 +3,19 @@ function MatarCarpenter()
 end
 
 function resetarCarpenter()
-    carpenter.x = 150
+    carpenter.x = 320
     carpenter.y = 750
     carpenter.gravity = -5
     carpenter.accel = 0
+    carpenter.bater = false
     carpenter.accelAux = 35
     carpenter.estaVivo = true
     carpenter:play()
     carpenter.rotation = 0
+end
+
+function Bater()
+
 end
  
 local options =
@@ -121,7 +126,7 @@ local imageSheet = graphics.newImageSheet( "images/carpenterSprites.png", option
 local sequenceData ={{name="carpenter", start=1, count=6, time=500},
                      {name="pular", start=7, count=1, time=700},
                      {name="colisao", start=7, count=1, time=500},
-                     {name="bater", start=8, count=1, time=500}}
+                     {name="bater", start=8, count=1, time=700}}
 carpenter = display.newSprite( imageSheet, sequenceData )
 resetarCarpenter()
 
@@ -146,14 +151,24 @@ function updateCarpenter()
             carpenter.y = carpenter.y - carpenter.accel 
             carpenter.y = carpenter.y - carpenter.gravity   
         else
-            if carpenter.y < 750 then 
-                carpenter.x = 150
-                carpenter.y = carpenter.y + 15
-                if carpenter.y > 700 then 
-                    carpenter:setSequence("carpenter")
-                    carpenter:play() 
+            tempo = 5
+            if carpenter.bater == true then
+                carpenter:setSequence("bater")
+                carpenter:play()
+                for a = 1, tempo, 1 do
+                    --tempo = tempo - 1
                 end
-            end       
+                carpenter:setSequence("carpenter")
+                carpenter:play()     
+            else
+                if carpenter.y < 750 then 
+                    carpenter.y = carpenter.y + 15
+                    if carpenter.y > 700 then 
+                        carpenter:setSequence("carpenter")
+                        carpenter:play() 
+                    end
+                end
+            end           
         end
 
     end
