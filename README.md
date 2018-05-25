@@ -1,24 +1,25 @@
-# Carpenter
+﻿# Carpenter
 
 ## Enredo
   Um pai que é carpinteiro e trabalha na construção civil, leva seu filho para o trabalho,
-  em um descuido, a criança corre pelo local brincando e o pai tenta pegar o filho em meio a um
-  ambiente cheio de perigos.
+  o menino é levado e bastante imperativo, o pai não tira o olho da criança, mas em um momento de
+  distração e descuido, a criança corre pelo local brincando e o pai preocupado tenta pegar o filho em meio a um
+  ambiente cheio de perigos, o carpenter tentar desviar dos obstáclos para recuperar seu filho.
 
 ## Objetivos
-  Concluir as fazes do jogo passando pelos obstáculos no ambiente da construção civil, para pegar a criança que corre pelo local.
+  Parmanecer o máximo de tempo possível no jogo, passando pelos obstáculos e vencendo os desafios no ambiente da 
+  construção civil, e não perdendo de vista a criança que corre pelo local.
 
 ## Objetivos específicos
-  Passar por obstáculos nas fazes, saltando ou destruindo os mesmos com as ferramentas que o Carpenter estiver
-  em mãos, o objetivo de cada fase é correr atrás da criança e pega-la ao concluir.
+  Passar por obstáculos no jogo, saltando ou destruindo os mesmos com a ferramenta que o Carpenter estiver
+  em mãos, o objetivo do jogo é correr atrás da criança não perdendo a mesma de vista.
 
 ## Regras do jogo com sistema de pontuação
-  A pontuação do jogador, vai de acordo o quão longe na fase ele irá. Para cada fase que o mesmo concluir será liberada 
-  uma outra fase para o jogador.
+  A pontuação do jogador, vai de acordo o quão longe no jogo ele chegar, a medida que o tempo do jogo vai aumentando
+  sua velocidade vai ficando mais rápido.
 
 ## Sistema de Vidas
-O carpenter só terá uma vida para cada fase.
+O Carpenter não poderá perder a criança de vista.
   
 ## Como o Jogo acaba
-  O Jogo acaba se: o Carpenter morrer em meios aos obstáculos ou se ele perder a criança de vista 
-  O Carpenter ganhará o jogo se concluir as fases. 
+  O Jogo acaba se o Carpenter perder a criança de vista.
