@@ -11,13 +11,47 @@ function resetarCarpenter()
     carpenter.accelAux = 35
     carpenter.estaVivo = true
     carpenter:play()
+    carpenter.correndo = true
     carpenter.rotation = 0
 end
 
-function Bater()
-
+function bater()
+    if carpenter.bater == true and carpenter.y >= 750 then
+        carpenter:setSequence("bater")
+        carpenter:play() 
+        carpenter.correndo = false
+        carpenter.bater = false
+        tempo = 15
+    else
+        if carpenter.correndo == false and carpenter.y >= 750 then
+            tempo = tempo -1
+            if tempo <= 0 then
+                carpenter:setSequence("carpenter")
+                carpenter:play() 
+                carpenter.correndo = true
+            end
+        end
+    end
 end
  
+function pular()
+    if(carpenter.accel > 0) then
+        carpenter:setSequence("pular")
+        carpenter:play()
+        carpenter.accel = carpenter.accel - 1
+        carpenter.y = carpenter.y - carpenter.accel 
+        carpenter.y = carpenter.y - carpenter.gravity   
+    else
+        if carpenter.y < 750 then 
+            carpenter.y = carpenter.y + 15
+            if carpenter.y > 700 then 
+                carpenter:setSequence("carpenter")
+                carpenter:play() 
+            end
+        end
+    end
+end
+
 local options =
 {   frames = 
     {
@@ -143,35 +177,8 @@ personagem:insert(collisionRect)
 personagens:insert(personagem)
 
 function updateCarpenter()
-    if(carpenter.estaVivo == true) then  
-        if(carpenter.accel > 0) then
-            carpenter:setSequence("pular")
-            carpenter:play()
-            carpenter.accel = carpenter.accel - 1
-            carpenter.y = carpenter.y - carpenter.accel 
-            carpenter.y = carpenter.y - carpenter.gravity   
-        else
-            tempo = 5
-            if carpenter.bater == true then
-                carpenter:setSequence("bater")
-                carpenter:play()
-                for a = 1, tempo, 1 do
-                    --tempo = tempo - 1
-                end
-                carpenter:setSequence("carpenter")
-                carpenter:play()     
-            else
-                if carpenter.y < 750 then 
-                    carpenter.y = carpenter.y + 15
-                    if carpenter.y > 700 then 
-                        carpenter:setSequence("carpenter")
-                        carpenter:play() 
-                    end
-                end
-            end           
-        end
-
-    end
+    bater()
+    pular()
     collisionRect.y = carpenter.y
 end
 
