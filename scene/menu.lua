@@ -11,20 +11,12 @@ local function gotoPhases()
 	composer.gotoScene( "scene.phase1" )
 end
 
-local function gotoHighScores()
-	composer.gotoScene( "scene.highscores" )
-end
-
 local function gotoCredits()
 	composer.gotoScene( "scene.credits" )
 end
 
-local function gotoOptions()
-	composer.gotoScene( "scene.options" )
-end
-
 local function gotoExit()
-	composer.gotoScene( "exit" )
+	--composer.gotoScene( "exit" )
 end
 
 
@@ -33,34 +25,29 @@ function scene:create( event )
 
 	local sceneGroup = self.view
 
+	--Imagem Menu
 	local background = display.newImageRect( sceneGroup, "images/menu.jpg", display.contentWidth, display.contentHeight )
 	background.x = display.contentCenterX
 	background.y = display.contentCenterY
 
-	local title = display.newImageRect( sceneGroup, "images/OpcoesMenu.png", 270, 280 )
-	title.x = display.contentCenterX + 100
-	title.y = 70
+	--Butão Play
+	local playButton    = display.newImage("images/playButton.png", 950, 550)
+	playButton.width  = 520
+	playButton.height = 168
 
-	local playButton = display.newText( sceneGroup, "Play", display.contentCenterX + 100, 35, native.systemFont, 30 )
-	playButton:setFillColor( 1, 1, 1 )
+	--Botão Créditos
+	local creditsButton = display.newImage("images/creditosButton.png", 950, 730 )
+	creditsButton.width  = 520
+	creditsButton.height = 168
 
-	local highScoresButton = display.newText( sceneGroup, "High Scores", display.contentCenterX + 100, 70, native.systemFont, 30 )
-	highScoresButton:setFillColor( 1, 1, 1 )
-
-	local creditsButton = display.newText( sceneGroup, "Credits", display.contentCenterX + 100, 110, native.systemFont, 30 )
-	creditsButton:setFillColor( 1, 1, 1 )	
-
-	local optionsButton = display.newText( sceneGroup, "Options", display.contentCenterX + 100, 148, native.systemFont, 30 )
-	optionsButton:setFillColor( 1, 1, 1 )	
-
-	local exitButton = display.newText( sceneGroup, "Exit", display.contentCenterX + 100, 185, native.systemFont, 30 )
-	creditsButton:setFillColor( 1, 1, 1 )			
+	--Botão Sair
+	local exitButton    = display.newImage("images/sairButton.png", 950, 920 )
+	exitButton.width  = 520
+	exitButton.height = 168
 
 	playButton:addEventListener( "tap", gotoPhases )
-	highScoresButton:addEventListener( "tap", gotoHighScores )
 	creditsButton:addEventListener( "tap", gotoCredits )
-	optionsButton:addEventListener( "tap", gotoOptions )
-	exitButton:addEventListener( "tap", gotoExit )	
+	--exitButton:addEventListener( "tap", gotoExit )	
 	audio.play( musicTrack, { channel=1, loops=-1 } )	
 end
 
