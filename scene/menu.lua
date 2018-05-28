@@ -16,7 +16,7 @@ local function gotoCredits()
 end
 
 local function gotoExit()
-	--composer.gotoScene( "exit" )
+	os.exit()
 end
 
 
@@ -31,23 +31,23 @@ function scene:create( event )
 	background.y = display.contentCenterY
 
 	--Butão Play
-	local playButton    = display.newImage("images/playButton.png", 950, 550)
+	local playButton    = display.newImage(sceneGroup, "images/playButton.png", 950, 550)
 	playButton.width  = 520
 	playButton.height = 168
 
 	--Botão Créditos
-	local creditsButton = display.newImage("images/creditosButton.png", 950, 730 )
+	local creditsButton = display.newImage(sceneGroup, "images/creditosButton.png", 950, 730 )
 	creditsButton.width  = 520
 	creditsButton.height = 168
 
 	--Botão Sair
-	local exitButton    = display.newImage("images/sairButton.png", 950, 920 )
+	local exitButton    = display.newImage(sceneGroup, "images/sairButton.png", 950, 920 )
 	exitButton.width  = 520
 	exitButton.height = 168
 
 	playButton:addEventListener( "tap", gotoPhases )
 	creditsButton:addEventListener( "tap", gotoCredits )
-	--exitButton:addEventListener( "tap", gotoExit )	
+	exitButton:addEventListener( "tap", gotoExit )	
 	audio.play( musicTrack, { channel=1, loops=-1 } )	
 end
 

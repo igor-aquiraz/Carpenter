@@ -7,12 +7,13 @@ local function gotoMenu()
 end
 
 function scene:create( event )
+	local sceneGroup = self.view
 	--Imagem Creditos
-	local creditos = display.newImage("images/creditos.png", display.contentWidth, display.contentHeight )
+	local creditos = display.newImageRect(sceneGroup, "images/creditos.png", display.contentWidth, display.contentHeight )
 	creditos.x = display.contentCenterX
 	creditos.y = display.contentCenterY
 
-	local voltarButton = display.newImage("images/voltar.png", 1000, 900 ) 
+	local voltarButton = display.newImage(sceneGroup, "images/voltar.png", 1000, 900 ) 
 	voltarButton.width  = 520
 	voltarButton.height = 168
 

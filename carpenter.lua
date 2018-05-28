@@ -10,6 +10,7 @@ function resetarCarpenter()
     carpenter.bater = false
     carpenter.accelAux = 35
     carpenter.estaVivo = true
+    carpenter:setSequence("carpenter")
     carpenter:play()
     carpenter.correndo = true
     carpenter.rotation = 0

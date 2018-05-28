@@ -90,13 +90,6 @@ function scene:create(event)
 		updateObstaculos()
 	end
 
-
-	--[[
-	local botaoMarreta = display.newImage( "images/botaoMarreta.png", 420, 260)
-	botaoMarreta.height = 50
-	botaoMarreta.width  = 50
-	]]--
-
 	timer.performWithDelay(1, update, -1)
 	Runtime:addEventListener( "enterFrame", move )
 	Runtime:addEventListener("touch", touched, -1)

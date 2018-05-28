@@ -12,7 +12,7 @@ function endGame()
 	gameOver.y = 250
 	gameOver.width = 900
 	gameOver.height = 600
-	--carpenter:setSequence("jumping")
+	carpenter:setSequence("pular")
 	carpenter:pause()
 	audio.stop(2)
 	audio.stop(3)
@@ -29,3 +29,4 @@ function restartGame()
 	resetBackgrounds()
 	resetarCrianca()
 end
+return scene
